@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VC Insight & Strategy Dashboard | 100억 잔고만들기</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@100;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-animation"></div>
+    
+    <div class="container">
+        <header>
+            <div class="logo">ChoiGPT <span class="accent">Strategy</span></div>
+            <h1>VC Alpha Strategy <span class="sub-title">100억 잔고만들기 프로젝트</span></h1>
+            <div class="last-updated">최종 업데이트: 2026.04.14</div>
+        </header>
+
+        <section class="market-status">
+            <div class="status-grid">
+                <div class="status-card glass">
+                    <div class="label">VC 생존율</div>
+                    <div class="value">10%</div>
+                </div>
+                <div class="status-card glass highlight">
+                    <div class="label">시장 펀드 감소</div>
+                    <div class="value">90% ↓</div>
+                </div>
+                <div class="status-card glass">
+                    <div class="label">활성 VC</div>
+                    <div class="value">약 400개 미만</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="strategy-roadmap">
+            <h2>💎 비즈니스 실행 로드맵</h2>
+            <div class="roadmap-grid">
+                <!-- Roadmap cards will be injected by script -->
+            </div>
+        </section>
+
+        <main class="content-split">
+            <section class="vc-explorer">
+                <div class="section-header">
+                    <h2>🔍 생존 VC 익스플로러</h2>
+                    <input type="text" id="vcSearch" placeholder="VC 이름 검색...">
+                </div>
+                <div class="vc-grid" id="vcGrid">
+                    <!-- VC cards will be injected by script -->
+                </div>
+            </section>
+
+            <aside class="sector-insight">
+                <h2>📊 핵심 투자 섹터</h2>
+                <div class="sector-list" id="sectorList">
+                    <!-- Sector items will be injected by script -->
+                </div>
+                
+                <div class="strategy-box glass">
+                    <h3>💡 핵심 요약 전략</h3>
+                    <ul>
+                        <li>살아남은 VC가 베팅하는 **AI + DePIN**에 집중</li>
+                        <li>Tier-1 VC의 포트폴리오 낙수 효과를 이용한 선점</li>
+                        <li>아시아-글로벌 브릿지 전략을 통한 대중 채택(Mass Adoption) 가속</li>
+                    </ul>
+                </div>
+            </aside>
+        </main>
+        
+        <footer>
+            <p>&copy; 2026 ChoiGPT Corp. All Rights Reserved. 초격차 비즈니스 전략 연구소</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

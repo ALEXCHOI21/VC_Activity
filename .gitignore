@@ -1,0 +1,12 @@
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# Brain & Agent Artifacts (Ignore planning and task files)
+.gemini/
+.brain/
+implementation_plan.md
+task.md
+walkthrough.md
