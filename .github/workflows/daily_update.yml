@@ -1,0 +1,52 @@
+name: Daily VC Data Update
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # 매일 한국 시간 오전 9시 (00:00 UTC)
+  workflow_dispatch: # 수동 실행 가능
+
+jobs:
+  update-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+            python -m pip install --upgrade pip
+            pip install requests
+
+      - name: Run update script
+        run: python update_vc_data.py
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add data.json
+          git commit -m "Auto-update VC data: $(date +'%Y-%m-%d')" || exit 0
+          git push
+
+      - name: Send email notification
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: "[Daily Update] VC Insights & Strategy Dashboard"
+          to: cdrhy219@gmail.com
+          from: ChoiGPT Strategy Bot
+          body: |
+            사용자님, 오늘의 VC 투자 정보 및 시장 동향 업데이트가 성공적으로 완료되었습니다.
+            
+            업데이트 일시: $(date +'%Y-%m-%d %H:%M') (KST)
+            대시보드 링크: https://alexchoi21.github.io/VC_Activity/
+            
+            초격차 비즈니스 전략을 위해 최신 정보를 확인해 보십시오.

@@ -1,92 +1,18 @@
-const data = {
-    "market_status": {
-        "vc_survival_rate": "10%",
-        "funds_decrease": "90%",
-        "active_vcs_count": "400개 미만"
-    },
-    "strategy": [
-        {
-            "phase": "Phase 1: Foundation",
-            "title": "생존자 기반 구축",
-            "description": "최근 90% 하락장에서도 생존한 VC들이 집중하는 AI 및 Infra 섹터 초기 프로젝트 선점.",
-            "focus": ["AI Infrastructure", "Modular Blockchain", "DePIN"]
-        },
-        {
-            "phase": "Phase 2: Alpha",
-            "title": "알파 수익 극대화",
-            "description": "a16z, Paradigm 등 Tier-1 VC의 신규 포트폴리오를 추적하여 상장 전 초기 투입 전략.",
-            "focus": ["AI Agents", "Zk-ML", "Liquid Restaking"]
-        },
-        {
-            "phase": "Phase 3: Scaling",
-            "title": "글로벌 엑시트 및 확장",
-            "description": "Hashed 등 아시아-글로벌 가교 VC 네트워크를 통해 글로벌 시장으로 사업 확장 및 이익 확정.",
-            "focus": ["Global Expansion", "M&A", "Institutional Exit"]
-        }
-    ],
-    "vcs": [
-        {
-            "name": "a16z crypto",
-            "tier": "Tier 1",
-            "focus": "Infrastructure, AI-Crypto",
-            "portfolios": ["Optimism", "Lido", "Worldcoin"]
-        },
-        {
-            "name": "Paradigm",
-            "tier": "Tier 1",
-            "focus": "Frontier Tech, AI",
-            "portfolios": ["Uniswap", "Flashbots", "EVMbench"]
-        },
-        {
-            "name": "Hashed",
-            "tier": "Tier 1",
-            "focus": "Gaming, Modular, L2",
-            "portfolios": ["Aptos", "Kroma", "Ondo Finance"]
-        },
-        {
-            "name": "Dragonfly",
-            "tier": "Tier 1",
-            "focus": "Liquid Tokens",
-            "portfolios": ["Celestia", "Monad", "Ethena"]
-        },
-        {
-            "name": "Polychain",
-            "tier": "Tier 1",
-            "focus": "DePIN, Privacy",
-            "portfolios": ["Helium", "Render", "EigenLayer"]
-        },
-        {
-            "name": "Multicoin Capital",
-            "tier": "Tier 2",
-            "focus": "Solana, DePIN",
-            "portfolios": ["Helium", "Render", "Hivemapper"]
-        },
-        {
-            "name": "1kx",
-            "tier": "Tier 2",
-            "focus": "Web3 Apps, DeFi",
-            "portfolios": ["Kulipa", "Cryptio", "Bluff"]
-        },
-        {
-            "name": "Spartan Group",
-            "tier": "Tier 2",
-            "focus": "APAC, DeFi, Gaming",
-            "portfolios": ["LayerZero", "Polygon", "Mythical Games"]
-        }
-    ],
-    "sectors": [
-        { "name": "AI + Crypto", "icon": "🤖", "growth": "High" },
-        { "name": "DePIN", "icon": "🛰️", "growth": "High" },
-        { "name": "Modular Infra", "icon": "🏗️", "growth": "Consistent" },
-        { "name": "RWA", "icon": "🏠", "growth": "Rising" },
-        { "name": "DeFi 2.0", "icon": "💰", "growth": "Mature" }
-    ]
-};
+let data = {};
 
-document.addEventListener('DOMContentLoaded', () => {
-    renderRoadmap();
-    renderVCs(data.vcs);
-    renderSectors();
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const response = await fetch('data.json');
+        data = await response.json();
+        
+        renderStatus();
+        renderRoadmap();
+        renderVCs(data.vcs);
+        renderSectors();
+        renderRecentInvestments(); // 신규 추가
+    } catch (error) {
+        console.error('Data load failed:', error);
+    }
 
     // Search Interaction
     document.getElementById('vcSearch').addEventListener('input', (e) => {
@@ -98,6 +24,16 @@ document.addEventListener('DOMContentLoaded', () => {
         renderVCs(filtered);
     });
 });
+
+function renderStatus() {
+    const statusCards = document.querySelectorAll('.status-card .value');
+    if (statusCards.length >= 3) {
+        statusCards[0].textContent = data.market_status.vc_survival_rate;
+        statusCards[1].textContent = data.market_status.funds_decrease + ' ↓';
+        statusCards[2].textContent = data.market_status.active_vcs_count;
+    }
+    document.querySelector('.last-updated').textContent = `최종 업데이트: ${data.market_status.last_updated}`;
+}
 
 function renderRoadmap() {
     const grid = document.querySelector('.roadmap-grid');
@@ -135,6 +71,41 @@ function renderSectors() {
         <div class="sector-item">
             <span>${s.icon} ${s.name}</span>
             <span class="growth-badge">${s.growth}</span>
+        </div>
+    `).join('');
+}
+
+function renderRecentInvestments() {
+    if (!data.recent_investments || data.recent_investments.length === 0) return;
+    
+    // Check if recent investments section exists, if not create it
+    let recentSection = document.getElementById('recentInvestments');
+    if (!recentSection) {
+        const mainContent = document.querySelector('.vc-explorer');
+        const header = document.createElement('div');
+        header.className = 'section-header';
+        header.style.marginTop = '2rem';
+        header.innerHTML = '<h2>🚀 최근 시장 투자 현황 (Market-wide)</h2>';
+        
+        recentSection = document.createElement('div');
+        recentSection.id = 'recentInvestments';
+        recentSection.className = 'vc-grid';
+        
+        mainContent.appendChild(header);
+        mainContent.appendChild(recentSection);
+    }
+    
+    recentSection.innerHTML = data.recent_investments.slice(0, 8).map(inv => `
+        <div class="vc-card glass" style="border-left: 3px solid var(--active-color)">
+            <h4>${inv.project} <span class="tier-badge" style="background:#2ecc71">${inv.amount}</span></h4>
+            <div class="focus-tags">
+                <span>${inv.category}</span>
+            </div>
+            <div class="portfolio-list">
+                <strong>Investors:</strong><br>
+                <span>${inv.investors.join(', ')}</span><br>
+                <small style="color:#7f8c8d">${inv.date}</small>
+            </div>
         </div>
     `).join('');
 }

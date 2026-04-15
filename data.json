@@ -1,0 +1,196 @@
+{
+  "market_status": {
+    "vc_survival_rate": "10%",
+    "funds_decrease": "90%",
+    "active_vcs_count": "약 420개 (상승 중)",
+    "last_updated": "2026-04-15"
+  },
+  "strategy": [
+    {
+      "phase": "Phase 1: Foundation",
+      "title": "생존자 기반 기반 구축",
+      "description": "최근 90% 하락장에서도 생존한 VC들이 집중하는 AI 및 Infra 섹터 초기 프로젝트 선점.",
+      "focus": [
+        "AI Infrastructure",
+        "Modular Blockchain",
+        "DePIN"
+      ]
+    },
+    {
+      "phase": "Phase 2: Alpha",
+      "title": "알파 수익 극대화",
+      "description": "a16z, Paradigm 등 Tier-1 VC의 신규 포트폴리오를 추적하여 상장 전 초기 투입 전략.",
+      "focus": [
+        "AI Agents",
+        "Zk-ML",
+        "Liquid Restaking"
+      ]
+    },
+    {
+      "phase": "Phase 3: Scaling",
+      "title": "글로벌 엑시트 및 확장",
+      "description": "Hashed 등 아시아-글로벌 가교 VC 네트워크를 통해 글로벌 시장으로 사업 확장 및 이익 확정.",
+      "focus": [
+        "Global Expansion",
+        "M&A",
+        "Institutional Exit"
+      ]
+    }
+  ],
+  "vcs": [
+    {
+      "name": "a16z crypto",
+      "tier": "Tier 1",
+      "focus": "Infrastructure, AI-Crypto",
+      "portfolios": [
+        "Optimism",
+        "Lido",
+        "Worldcoin"
+      ]
+    },
+    {
+      "name": "Paradigm",
+      "tier": "Tier 1",
+      "focus": "Frontier Tech, AI",
+      "portfolios": [
+        "Uniswap",
+        "Flashbots",
+        "EVMbench"
+      ]
+    },
+    {
+      "name": "Hashed",
+      "tier": "Tier 1",
+      "focus": "Gaming, Modular, L2",
+      "portfolios": [
+        "Aptos",
+        "Kroma",
+        "Ondo Finance"
+      ]
+    },
+    {
+      "name": "Dragonfly",
+      "tier": "Tier 1",
+      "focus": "Liquid Tokens",
+      "portfolios": [
+        "Celestia",
+        "Monad",
+        "Ethena"
+      ]
+    },
+    {
+      "name": "Polychain",
+      "tier": "Tier 1",
+      "focus": "DePIN, Privacy",
+      "portfolios": [
+        "Helium",
+        "Render",
+        "EigenLayer"
+      ]
+    },
+    {
+      "name": "Multicoin Capital",
+      "tier": "Tier 2",
+      "focus": "Solana, DePIN",
+      "portfolios": [
+        "Helium",
+        "Render",
+        "Hivemapper"
+      ]
+    },
+    {
+      "name": "1kx",
+      "tier": "Tier 2",
+      "focus": "Web3 Apps, DeFi",
+      "portfolios": [
+        "Kulipa",
+        "Cryptio",
+        "Bluff"
+      ]
+    },
+    {
+      "name": "Spartan Group",
+      "tier": "Tier 2",
+      "focus": "APAC, DeFi, Gaming",
+      "portfolios": [
+        "LayerZero",
+        "Polygon",
+        "Mythical Games"
+      ]
+    }
+  ],
+  "sectors": [
+    {
+      "name": "AI + Crypto",
+      "icon": "🤖",
+      "growth": "High"
+    },
+    {
+      "name": "DePIN",
+      "icon": "🛰️",
+      "growth": "High"
+    },
+    {
+      "name": "Modular Infra",
+      "icon": "🏗️",
+      "growth": "Consistent"
+    },
+    {
+      "name": "RWA",
+      "icon": "🏠",
+      "growth": "Rising"
+    },
+    {
+      "name": "DeFi 2.0",
+      "icon": "💰",
+      "growth": "Mature"
+    }
+  ],
+  "recent_investments": [
+    {
+      "project": "Bitcoin's $76,000 breakout fails but a rare signal is hinting at major market bottom",
+      "amount": "Undisclosed",
+      "category": "Crypto/AI/Web3",
+      "investors": [
+        "Various VCs"
+      ],
+      "date": "Tue, 14 Apr 2026"
+    },
+    {
+      "project": "Goldman Sachs files for bitcoin income ETF in crypto push",
+      "amount": "Undisclosed",
+      "category": "Crypto/AI/Web3",
+      "investors": [
+        "Various VCs"
+      ],
+      "date": "Tue, 14 Apr 2026"
+    },
+    {
+      "project": "From DeFi to deep space: How SkyMapper and Avalanche are securing the world's telescope records",
+      "amount": "Undisclosed",
+      "category": "Crypto/AI/Web3",
+      "investors": [
+        "Various VCs"
+      ],
+      "date": "Tue, 14 Apr 2026"
+    },
+    {
+      "project": "OneCoin victims get a $40 million lifeline more than a decade after the scam began",
+      "amount": "$40 MILLION",
+      "category": "Crypto/AI/Web3",
+      "investors": [
+        "Various VCs"
+      ],
+      "date": "Tue, 14 Apr 2026"
+    },
+    {
+      "project": "Strategy's STRC sees record-breaking trading day, may surpass that on Tuesday",
+      "amount": "Undisclosed",
+      "category": "Crypto/AI/Web3",
+      "investors": [
+        "Various VCs"
+      ],
+      "date": "Tue, 14 Apr 2026"
+    }
+  ]
+}
